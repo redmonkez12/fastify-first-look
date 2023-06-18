@@ -31,7 +31,8 @@ app.post("/todos", {
 app.get("/todos/:id(\\d+)", {
     handler(request, reply) {
         const {id} = request.params;
-        const todo = todos.find(todo => todo.id === id);
+
+        const todo = todos.find(todo => todo.id === +id);
         if (todo) {
             return reply.send(todo);
         }
